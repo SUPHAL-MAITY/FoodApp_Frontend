@@ -4,9 +4,11 @@ import SearchInput from "../components/Layout/SearchInput.jsx";
 import CategoryCard from "../components/Layout/CategoryCard.jsx";
 import axios from "axios";
 import { useState } from "react";
+import Loader from "../components/Loader.jsx";
 
 function Home() {
   const [categories, setCategories] = useState([]);
+  const [loading,setLoading]=useState(false)
   const [result, setResult] = useState([]);
 
   useEffect(() => {
@@ -15,26 +17,19 @@ function Home() {
 
   const getCategories = async () => {
     try {
+      setLoading(true)
       const { data } = await axios.get(
         `${import.meta.env.VITE_API}/api/category/getall`
       );
       setCategories(data.data);
+      setLoading(false)
     } catch (error) {
       console.log(error);
-    }
+      setLoading(false)
+    }finally{setLoading(false)}
   };
 
-  // const handleSearch=async(query)=>{
-  //   try {
-  //     const {data}= await axios.get(`${import.meta.env.VITE_API}/api/food/search?q=${query}`)
-  //     setResult(data?.data?.foods)
-  //     console.log(data)
 
-  //   } catch (error) {
-  //     console.log(error)
-  //   }
-
-  // }
 
   return (
     <>
@@ -51,7 +46,7 @@ function Home() {
           <SearchInput />
         </div>
       </div>
-
+      {loading && <Loader/>}
       <div className="grid grid-cols-1 sm:grid-cols-4 sm:gap-3 ">
         {categories?.map((c) => (
           <div key={c._id}>
@@ -59,6 +54,8 @@ function Home() {
           </div>
         ))}
       </div>
+
+
     </>
   );
 }
