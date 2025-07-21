@@ -47,6 +47,16 @@ const FoodPage = () => {
     updateCart(newItem);
   };
 
+
+  if(foods?.length==0) {
+    return (
+      <div className="flex justify-center">
+         <h1 className="text-red-500 text-xl my-10" >No food found</h1>
+      </div>
+     
+    )
+  }
+
   return (
     <div className=" ">
       {loading && <Loader/>}
