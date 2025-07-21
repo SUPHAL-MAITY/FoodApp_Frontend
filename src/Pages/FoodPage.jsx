@@ -28,12 +28,6 @@ const FoodPage = () => {
   };
 
   const addToCart = (id, title, description, price, imageUrl) => {
-    
-    // console.log(id)
-    // console.log(title)
-    // console.log(description)
-    // console.log(price)
-    // console.log(imageUrl)
     const newItem = {
       id,
       title,
@@ -43,7 +37,7 @@ const FoodPage = () => {
       quantity: 1,
       total: price,
     };
-    alert("Added to the card")
+    alert("Added to the card");
 
     updateCart(newItem);
   };

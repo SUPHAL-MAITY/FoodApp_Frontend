@@ -42,7 +42,6 @@ function Navbar() {
 
           <div>
             <ul className="flex flex-row items-center justify-around w-full">
-            
               <li className="p-3 xl:p-6">
                 {auth?.token && (
                   <Link to="/add-restaurant">
@@ -68,7 +67,7 @@ function Navbar() {
                   </Link>
                 )}
               </li>
-            
+
               <li className="font-serif p-3 xl:p-6">
                 {" "}
                 <Link to="/cart" className="navbar-brand">
@@ -110,8 +109,6 @@ function Navbar() {
               </li>
             </ul>
           </div>
-
-          
         </nav>
 
         <nav className=" xl:contents">

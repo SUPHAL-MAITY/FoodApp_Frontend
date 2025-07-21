@@ -113,7 +113,8 @@ const Signup = () => {
                 className=" text-center bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               >
                 <option hidden defaultValue>
-                  {" "}Choose Your Role{" "}
+                  {" "}
+                  Choose Your Role{" "}
                 </option>
                 <option value="client">Client</option>
                 <option value="admin">Admin</option>
@@ -160,7 +161,7 @@ const Signup = () => {
               href="#"
               className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500"
             >
-               <span className="mx-1"></span>Start a 14 day free trial
+              <span className="mx-1"></span>Start a 14 day free trial
             </a>
           </p>
         </div>
