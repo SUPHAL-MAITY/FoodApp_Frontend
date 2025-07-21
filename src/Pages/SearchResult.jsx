@@ -1,10 +1,11 @@
 import React, { useEffect } from "react";
-import { useSearchParams } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
 import useCart from "../context/CartContext";
 import { Link } from "react-router-dom";
 import { Button } from "flowbite-react";
+import Loader from "../components/Loader";
 
 const SearchResult = () => {
   const [searchPrams] = useSearchParams();
@@ -13,6 +14,9 @@ const SearchResult = () => {
   const [results, setResults] = useState([]);
   const [length, setLength] = useState("");
   const { cart, updateCart } = useCart();
+  const [loading ,setLoading]=useState(false)
+
+  const navigate=useNavigate()
 
   useEffect(() => {
     fetchData();
@@ -21,13 +25,18 @@ const SearchResult = () => {
   const fetchData = async () => {
     if (query) {
       try {
+        setLoading(true)
         const { data } = await axios.get(
           `${import.meta.env.VITE_API}/api/food/search?q=${query}`
         );
         setResults(data?.data?.foods);
         setLength(data?.data?.length);
+        setLoading(false)
       } catch (error) {
         console.log(error);
+        setLoading(false)
+      }finally{
+        setLoading(false)
       }
     }
   };
@@ -45,18 +54,20 @@ const SearchResult = () => {
     alert("Added to the card");
 
     updateCart(newItem);
+    navigate("/cart")
   };
 
   return (
     <div>
+      {loading && <Loader/>}
       {length > 0 ? (
         <>
           <div className=" ">
-            <div className="grid grid-cols-4 gap-3">
+            <div className="flex  justify-center  md:justify-start items-center flex-wrap">
               {results?.map((c, i) => (
                 <div
                   key={i}
-                  className="w-full border-8 max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
+                  className="w-80 border-8  bg-white border border-gray-200 rounded-lg shadow-lg my-4 ml-2"
                 >
                   <Link to="#">
                     <img
