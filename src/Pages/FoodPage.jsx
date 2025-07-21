@@ -3,10 +3,12 @@ import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 import useCart from "../context/CartContext";
 import { Button } from "flowbite-react";
+import Loader from "../components/Loader";
 
 const FoodPage = () => {
   const { id } = useParams();
   const [foods, setFoods] = useState([]);
+  const [loading,setLoading]=useState(false)
 
   const { cart, updateCart } = useCart();
 
@@ -16,15 +18,18 @@ const FoodPage = () => {
 
   const getFoodsByCategory = async () => {
     try {
+      setLoading(true)
       const { data } = await axios.get(
         `${import.meta.env.VITE_API}/api/food/getbycategory/${id}`
       );
       console.log("Foods obtained by category");
       console.log(data);
       setFoods(data.data.foods);
+      setLoading(false)
     } catch (error) {
       console.log(error);
-    }
+      setLoading(false)
+    }finally{setLoading(false)}
   };
 
   const addToCart = (id, title, description, price, imageUrl) => {
@@ -44,6 +49,7 @@ const FoodPage = () => {
 
   return (
     <div className=" ">
+      {loading && <Loader/>}
       <div className="flex  flex-wrap  justify-center  md:justify-start  gap-3">
         {foods?.map((c, i) => (
           <div
