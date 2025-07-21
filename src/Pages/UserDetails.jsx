@@ -13,7 +13,7 @@ const UserDetails = () => {
   const [phone, setPhone] = useState("");
   const [usertype, setUsertype] = useState("");
   const [id, setId] = useState("");
-  const [loading,setLoading]=useState(false)
+  const [loading, setLoading] = useState(false);
 
   const { auth, AuthSet } = useAuth();
 
@@ -25,7 +25,7 @@ const UserDetails = () => {
 
   const getUserDetails = async () => {
     try {
-      setLoading(true)
+      setLoading(true);
       const { data } = await axios.get(
         `${import.meta.env.VITE_API}/api/userdetails/getuser`
       );
@@ -36,10 +36,10 @@ const UserDetails = () => {
       setUsertype(data.data.usertype);
 
       setId(data.data._id);
-      setLoading(false)
+      setLoading(false);
     } catch (error) {
       console.log(error);
-      setLoading(false)
+      setLoading(false);
     }
   };
 
@@ -61,9 +61,8 @@ const UserDetails = () => {
   };
 
   return (
-    <div className="relative flex min-h-screen flex-col justify-center overflow-hidden bg-transparent py-6 sm:py-12">
-
-      {loading && <Loader/>}
+    <div className="relative flex min-h-screen flex-col justify-center overflow-hidden bg-transparent py-6 sm:py-12 font-serif z-0">
+      {loading && <Loader />}
       <div className="group relative cursor-pointer overflow-hidden bg-white px-6 pt-10 pb-8 shadow-xl ring-1 ring-gray-900/5 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl sm:mx-auto sm:max-w-sm sm:rounded-lg sm:px-10">
         <span className="absolute top-10 z-0 h-20 w-20 rounded-full bg-sky-500 transition-all duration-300 group-hover:scale-[10]" />
         <div className="relative z-10 mx-auto max-w-md">
@@ -119,7 +118,7 @@ const UserDetails = () => {
         </div>
       </div>
 
-      <div className=" ml-[400px]  ">
+      <div className=" flex justify-center mt-2 ">
         <button onClick={(e) => handleDelete(id)} className="text-red-600">
           Delete Account ?{" "}
         </button>
