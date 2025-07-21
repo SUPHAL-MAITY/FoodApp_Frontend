@@ -48,14 +48,14 @@ const AddRestro = () => {
 
   //  title   imageUrl foods pickup  delivery  isOpen logoUrl rating ratingCount coords
   return (
-    <div>
+    <div className="font-serif">
       {!auth.token && (
         <div className="mt-1 mb-2 p-2 text-center  font-serif text-xl font-extrabold bg-red-600 text-white">
           <h1>Please Login to Add Restaurant </h1>
         </div>
       )}
 
-      <form onSubmit={handleSubmit} className="w-64 mx-auto my-4 ">
+      <form onSubmit={handleSubmit} className="w-[300px] mx-auto my-4  ">
         <div className="relative z-0 w-full mb-5 group">
           <input
             type="text"
