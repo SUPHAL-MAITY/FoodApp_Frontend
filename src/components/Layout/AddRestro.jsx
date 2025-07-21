@@ -55,7 +55,7 @@ const AddRestro = () => {
         </div>
       )}
 
-      <form onSubmit={handleSubmit} className="max-w-md mx-auto">
+      <form onSubmit={handleSubmit} className="w-64 mx-auto my-4 ">
         <div className="relative z-0 w-full mb-5 group">
           <input
             type="text"
