@@ -47,7 +47,7 @@ function Home() {
         </div>
       </div>
       {loading && <Loader />}
-      <div className="grid grid-cols-1 sm:grid-cols-4 sm:gap-3 justify-center">
+      <div className="flex  justify-center items-center flex-wrap">
         {categories?.map((c) => (
           <div key={c._id} className="justify-self-center">
             <CategoryCard id={c._id} title={c.title} imageUrl={c.imageUrl} />
