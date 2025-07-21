@@ -12,7 +12,7 @@ const SearchInput = () => {
 
   return (
     <div>
-      <div className="max-w-[300px] mx-auto">
+      <div className="max-w-[300px] lg-w-[400px] mx-auto">
         <div className="flex">
           <div className="relative w-full">
             <input

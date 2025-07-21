@@ -8,7 +8,7 @@ import Loader from "../components/Loader.jsx";
 
 function Home() {
   const [categories, setCategories] = useState([]);
-  const [loading,setLoading]=useState(false)
+  const [loading, setLoading] = useState(false);
   const [result, setResult] = useState([]);
 
   useEffect(() => {
@@ -17,19 +17,19 @@ function Home() {
 
   const getCategories = async () => {
     try {
-      setLoading(true)
+      setLoading(true);
       const { data } = await axios.get(
         `${import.meta.env.VITE_API}/api/category/getall`
       );
       setCategories(data.data);
-      setLoading(false)
+      setLoading(false);
     } catch (error) {
       console.log(error);
-      setLoading(false)
-    }finally{setLoading(false)}
+      setLoading(false);
+    } finally {
+      setLoading(false);
+    }
   };
-
-
 
   return (
     <>
@@ -46,7 +46,7 @@ function Home() {
           <SearchInput />
         </div>
       </div>
-      {loading && <Loader/>}
+      {loading && <Loader />}
       <div className="grid grid-cols-1 sm:grid-cols-4 sm:gap-3 justify-center">
         {categories?.map((c) => (
           <div key={c._id} className="justify-self-center">
@@ -54,8 +54,6 @@ function Home() {
           </div>
         ))}
       </div>
-
-
     </>
   );
 }
