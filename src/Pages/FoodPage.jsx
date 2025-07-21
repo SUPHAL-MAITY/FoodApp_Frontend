@@ -44,11 +44,11 @@ const FoodPage = () => {
 
   return (
     <div className=" ">
-      <div className="grid grid-cols-4 gap-3">
+      <div className="flex  flex-wrap  justify-center  md:justify-start  gap-3">
         {foods?.map((c, i) => (
           <div
             key={i}
-            className="w-full border-8 max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
+            className="w-full my-2 border-8 max-w-[300px] bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
           >
             <Link to="#">
               <img
@@ -132,7 +132,7 @@ const FoodPage = () => {
                       c.imageUrl
                     )
                   }
-                  className="text-white font-serif bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-1 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                  className="  w-[120px] text-white font-serif bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-xs px-1 py-1 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                 >
                   Add to cart
                 </Button>
