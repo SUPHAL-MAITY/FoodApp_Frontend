@@ -93,7 +93,8 @@ const AppBar = () => {
           <Dropdown.Item as={Link} to="/update-password">
             Update Password
           </Dropdown.Item>
-          <Dropdown.Item as={Link} to="/admin/dashboard">
+
+          <Dropdown.Item as={Link} to="/admin/dashboard" className="hidden md:flex">
             Admin Dashboard
           </Dropdown.Item>
           <Dropdown.Item as={Link} to="/restaurant">

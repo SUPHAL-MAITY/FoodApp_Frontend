@@ -34,7 +34,7 @@ const CreateCategories = () => {
 
           <div>
             <div className="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
-              <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+              <div className="mt-4 sm:mx-auto sm:w-full sm:max-w-sm">
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div className="mt-2 font-serif   ">
                     <input
