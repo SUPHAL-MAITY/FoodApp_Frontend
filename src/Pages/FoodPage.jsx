@@ -48,7 +48,7 @@ const FoodPage = () => {
   };
 
 
-  if(foods?.length==0) {
+  if(loading==false && foods?.length==0) {
     return (
       <div className="flex justify-center">
          <h1 className="text-red-500 text-xl my-10" >No food found</h1>

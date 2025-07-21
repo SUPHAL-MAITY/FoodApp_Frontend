@@ -3,11 +3,11 @@ import { Link } from "react-router-dom";
 
 const CategoryCard = ({ id, title, imageUrl }) => {
   return (
-    <div className="p-3">
-      <div className="w-64 flex flex-col items-center  max-w-sm  bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+    <div className="p-5">
+      <div className="w-64 flex flex-col items-center  max-w-sm  bg-white border border-gray-200 rounded-lg shadow-lg ">
         <Link href="#">
           <img
-            className="size-52  sm:size-64   hover:size-full rounded-t-lg   transition duration-500 cursor-pointer "
+            className="size-52  sm:size-64    rounded-t-lg   transition duration-500 cursor-pointer "
             src={imageUrl}
           />
         </Link>
