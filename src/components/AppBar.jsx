@@ -3,15 +3,22 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { Dropdown } from "flowbite-react";
 import useAuth from "../context/Auth";
+import { useState } from "react";
 
 const AppBar = () => {
   const { auth, AuthSet } = useAuth();
+  const [loading,setLoading]=useState(false)
   const navigate = useNavigate();
 
   const handleLogout = async (e) => {
     e.preventDefault();
 
+    if(loading){
+      return;
+    }
+
     try {
+      setLoading(true)
       const { data } = await axios.post(
         `${import.meta.env.VITE_API}/api/user/logout`
       );
@@ -19,12 +26,14 @@ const AppBar = () => {
       if (data) {
         AuthSet(null, "");
         localStorage.removeItem("auth");
+        setLoading(false)
         alert("User logged out  successfully");
       }
 
       navigate("/login");
     } catch (error) {
       console.log(error);
+      setLoading(false)
     }
   };
 
@@ -53,8 +62,9 @@ const AppBar = () => {
                   <span className="mr-4">Login</span>
                 </Link>
               ) : (
-                <Link onClick={handleLogout} to="">
-                  <span className="mr-4">Log out</span>
+                <Link onClick={handleLogout} to=""> 
+                   {loading ? <span className="mr-4 text-gray-100 " > Loading...</span> :  <span className="mr-4">Log out</span> }
+                  
                 </Link>
               )}
            
