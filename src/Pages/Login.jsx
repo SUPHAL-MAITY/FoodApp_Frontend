@@ -7,6 +7,7 @@ const Login = () => {
   const [userName, setUserName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+   const [loading,setLoading]=useState(false)
   const navigate = useNavigate();
 
   const { auth, AuthSet } = useAuth();
@@ -14,13 +15,19 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    if(loading){
+      return;
+    }
+
     try {
+      setLoading(true)
       const { data } = await axios.post(
         `${import.meta.env.VITE_API}/api/user/login`,
         { userName, email, password }
       );
       // console.log(data)
       if (data) {
+        setLoading(false)
         alert("User logged in  successfully");
       }
       console.log("user");
@@ -39,6 +46,7 @@ const Login = () => {
       navigate("/restaurant");
     } catch (error) {
       console.log(error);
+      setLoading(false)
     }
   };
 
@@ -100,7 +108,8 @@ const Login = () => {
                       type="submit"
                       className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                     >
-                      Sign in
+                       {loading ?  "Loading..." :  "Sign in" }
+                      
                     </button>
                   </div>
                 </form>
